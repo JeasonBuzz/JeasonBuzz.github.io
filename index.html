@@ -4,55 +4,85 @@
     <title>Calculator</title>
     <style>
         .container {
-            max-width: 400px;
+            max-width: 300px;
             margin: 0 auto;
             padding: 20px;
-            border: 1px solid #ccc;
+            background-color: #f0f0f0;
             border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
         }
+
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+
+        .result {
+            grid-column: span 4;
+            padding: 10px;
+            font-size: 24px;
+            text-align: right;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+        }
+
         .btn {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            margin: 5px;
-            text-align: center;
-            font-size: 20px;
-            line-height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #333;
+            background-color: #fff;
             border: 1px solid #ccc;
             border-radius: 5px;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
             cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
         }
+
         .btn:hover {
             background-color: #f0f0f0;
+        }
+
+        .btn.operator {
+            background-color: #f2f2f2;
+        }
+
+        .btn.equal {
+            background-color: #80c780;
+            color: #fff;
+        }
+
+        .btn.clear {
+            background-color: #e84c3d;
+            color: #fff;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <input type="text" id="result" readonly>
-        <br>
-        <div>
-            <button class="btn" onclick="appendNumber('7')">7</button>
-            <button class="btn" onclick="appendNumber('8')">8</button>
-            <button class="btn" onclick="appendNumber('9')">9</button>
-            <button class="btn" onclick="appendOperator('+')">+</button>
-            <br>
-            <button class="btn" onclick="appendNumber('4')">4</button>
-            <button class="btn" onclick="appendNumber('5')">5</button>
-            <button class="btn" onclick="appendNumber('6')">6</button>
-            <button class="btn" onclick="appendOperator('-')">-</button>
-            <br>
-            <button class="btn" onclick="appendNumber('1')">1</button>
-            <button class="btn" onclick="appendNumber('2')">2</button>
-            <button class="btn" onclick="appendNumber('3')">3</button>
-            <button class="btn" onclick="appendOperator('*')">*</button>
-            <br>
-            <button class="btn" onclick="appendNumber('0')">0</button>
-            <button class="btn" onclick="appendNumber('.')">.</button>
-            <button class="btn" onclick="calculate()">=</button>
-            <button class="btn" onclick="appendOperator('/')">/</button>
-            <br>
-            <button class="btn" onclick="clearResult()">Clear</button>
+        <input type="text" id="result" class="result" readonly>
+        <div class="calculator">
+            <div class="btn" onclick="appendNumber('7')">7</div>
+            <div class="btn" onclick="appendNumber('8')">8</div>
+            <div class="btn" onclick="appendNumber('9')">9</div>
+            <div class="btn operator" onclick="appendOperator('+')">+</div>
+            <div class="btn" onclick="appendNumber('4')">4</div>
+            <div class="btn" onclick="appendNumber('5')">5</div>
+            <div class="btn" onclick="appendNumber('6')">6</div>
+            <div class="btn operator" onclick="appendOperator('-')">-</div>
+            <div class="btn" onclick="appendNumber('1')">1</div>
+            <div class="btn" onclick="appendNumber('2')">2</div>
+            <div class="btn" onclick="appendNumber('3')">3</div>
+            <div class="btn operator" onclick="appendOperator('*')">*</div>
+            <div class="btn" onclick="appendNumber('0')">0</div>
+            <div class="btn" onclick="appendNumber('.')">.</div>
+            <div class="btn equal" onclick="calculate()">=</div>
+            <div class="btn operator" onclick="appendOperator('/')">/</div>
+            <div class="btn clear" onclick="clearResult()">C</div>
         </div>
     </div>
 
@@ -83,4 +113,3 @@
     </script>
 </body>
 </html>
-
